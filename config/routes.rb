@@ -1,7 +1,9 @@
 Steph::Application.routes.draw do
 
   resource :user # what does this do for me?
-  resource :TESTAPI 
+  #resource :TESTAPI 
+
+  #root  :to => 'home#index'
 
   match '/users/add' => 'users#add', :via => :post, :defaults => { :format => 'json' }
   match '/users/login' => 'users#login', :via => :post, :defaults => { :format => 'json' }
