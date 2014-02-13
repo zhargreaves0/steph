@@ -6,14 +6,14 @@ class UsersController < ApplicationController
 	def login
 		user = params[:user]
 		password = params[:password]
-		result = login(user,password)
+		result = User.login(user,password)
 		render :json => result 
 	end  
 
 	def add
 		user = params[:user]
 		password = params[:password]
-		result = add(user, password)	
+		result = User.add(user, password)	
 		render :json => result 
 	end 	
 
