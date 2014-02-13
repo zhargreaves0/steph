@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
 	def TESTAPI_resetFixture
 		if (params.length == 0 || params.length == nil)
-    		result = User.TESTAPI_resetFixture()
+    		result = User.TESTAPI_resetFixture
     		temp = {errCode: result}
      	 	render :json => temp 
       		 #passing in empty dictionary? what if passed none empty payload?

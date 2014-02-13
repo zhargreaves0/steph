@@ -43,7 +43,7 @@ def self.login(user, password)
 end
 
 
-def self.TESTAPI_resetFixture()
+def self.TESTAPI_resetFixture
       User.delete_all  ##the ids dont reset!
       return @@SUCCESS
     end
