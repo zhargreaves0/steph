@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   	def TESTAPI_unitTests
   		# RAILS_ROOT 
 
-  		render text: `rspec --out #{Rails.root}/spec/`
+  		render text: `rspec #{Rails.root}/spec/`
 
   	end
 
