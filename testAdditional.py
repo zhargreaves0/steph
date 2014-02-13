@@ -73,7 +73,7 @@ class TestLoginUser(testLib.RestTestCase):
         self.assertDictEqual(expected, respData)
 
     def testAdd1(self):
-        self.makeRequest("/users/add", method="POST", data = { 'user' : 'zack ', 'password' : 'wack'} )
+        self.makeRequest("/users/add", method="POST", data = { 'user' : 'zack', 'password' : 'wack'} )
         respData = self.makeRequest("/users/login", method="POST", data = { 'user' : 'zack', 'password' : 'wack'} )
         self.assertResponse(respData, count = 2)
 

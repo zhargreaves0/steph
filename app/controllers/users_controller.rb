@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 		user = params[:user]
 		password = params[:password]
 		result = User.add(user, password)
+
 		if result == 1 
 			temp = {errCode: result, count: 1}
 		end
@@ -30,7 +31,6 @@ class UsersController < ApplicationController
 	end 	
 
 	def TESTAPI_resetFixture
-		if (params.length == 0 || params.length == nil)
     		result = User.TESTAPI_resetFixture
     		temp = {errCode: result}
      	 	render :json => temp 
