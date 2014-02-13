@@ -7,21 +7,35 @@ class UsersController < ApplicationController
 		user = params[:user]
 		password = params[:password]
 		result = User.login(user,password)
-		render :json => result 
+		if result > 1
+			temp = {errCode: 1, count: result}
+		end
+		if result == -1 
+			temp = {errCode: result}
+		end 
+		render :json => temp 
 	end  
 
 	def add
 		user = params[:user]
 		password = params[:password]
-		result = User.add(user, password)	
-		render :json => result 
+		result = User.add(user, password)
+		if result == 1 
+			temp = {errCode: result, count: 1}
+		end
+		if result != 1 
+			temp = {errCode: result}	
+		end
+		render :json => temp 
 	end 	
 
 	def TESTAPI_resetFixture
-    	respond_to do |var|
-     	 User.delete_all
-      	var.json { render :json => { errCode: SUCCESS } }
-   		 end
+		if (params.length == 0 || params.length == nil)
+    		result = User.TESTAPI_resetFixture()
+    		temp = {errCode: result}
+     	 	render :json => temp 
+      		 #passing in empty dictionary? what if passed none empty payload?
+   		end
   	end
 
   	def TESTAPI_unitTests
@@ -33,7 +47,6 @@ class UsersController < ApplicationController
   		nrFailed = $1.to_i	
   		tmp = {nrFailed: nrFailed, output: a, totalTests: totalTests}
   		render :json => tmp 
-
   	end
 
 
