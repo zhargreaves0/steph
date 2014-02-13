@@ -35,7 +35,6 @@ class UsersController < ApplicationController
     		temp = {errCode: result}
      	 	render :json => temp 
       		 #passing in empty dictionary? what if passed none empty payload?
-   		end
   	end
 
   	def TESTAPI_unitTests
