@@ -63,6 +63,7 @@ end
 
 describe User do
 	it "Checking Login return statement" do
+		User.TESTAPI_resetFixture
 		c = User.add("user1","password1")
 		(User.login("user1","password1")).should be > 1
 	end
@@ -77,13 +78,12 @@ end
 
 describe User do
 	it "Reset Fixture and add User checks" do
-		a = User.add("user1","password1")
-		(User.count).should equal(1)
-		User.TESTAPI_resetFixture
-		c = User.add("user1","password1")
-		d = User.add("user2","password1")
-		e = User.add("user3","password1")
-		(User.count).should equal(3)
+		ab =User.count
+		c  =User.add("user1","password1")
+		d  =User.add("user2","password1")
+		e  =User.add("user3","password1")
+		fg =User.count
+		ab.should be < fg 
 		User.TESTAPI_resetFixture
 		(User.count).should equal(0)
 	end
