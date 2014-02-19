@@ -1,0 +1,49 @@
+/* This file contains the style parameters for the sample client. */
+
+h1 {
+	font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+ 	padding: 5px;
+ 	font-weight: normal;
+}
+
+
+h2 {
+	font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+ 	padding: 5px;
+ 	font-weight: normal;
+}
+
+
+.bckgndtext {
+	text-align:center;
+	padding: 5px;
+ 	font-weight: normal;
+	color: black;
+    width: 400px;
+    height: 300px;
+    border: black;
+    background-color: rgb(240,240,240);
+    font-size: 20px;
+    font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.txt {
+	text-align:center;
+	padding: 5px;
+ 	font-weight: normal;
+	color: white;
+    margin: 10px 20px 10px 20px;
+    border: black;
+    color: black;
+    background-color: rgb(240,240,240);
+    font-size: 20px;
+    font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+	font-family: 'Helvetica Neue Light', HelveticaNeue-Light, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+

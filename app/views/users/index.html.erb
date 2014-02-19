@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="format.css"> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="codesRequests.js"></script>
+</head>
+
+<body>
+
+
+<center>	
+
+<div id="error-page" class="bckgndtext">
+  <div id="error-message" class="txt">Something has gone wrong: 
+    										</div>
+ <br>
+ <div id="debug-message" class="txt">Debug message 
+    										</div>
+ <div id="debug-message2" class="txt"></div>   										
+</div>
+
+<center>	
+<h1 id="login" class="bckgndtext">
+  <div id="login-txt" class="txt">Please enter your credentials below
+    										</div>
+  <center>
+    <form>
+      <div id = "formfields">
+      Username: <input id="login-username" type="text" name="username"><br>
+      Password: <input id="login-password" type="password" name="pwd"><br>
+      <br>
+      <input id="login" type="submit" value="Login">
+      <input id="adduser" type="submit" value="Add User">
+ 	 </div>
+    </form> 
+  </h1>  
+  </center>
+
+<center>
+<h2 id="landing" class="bckgndtext">
+  <div id="landing-txt" class="txt">Welcome! you have successfully logged in!</div>
+  <center>
+    <form>
+      <div id = "formfields">
+      <input type="submit" id="logout-button" value="Logout">
+      </div>
+    </form>
+  </center>
+</h1>
+</center>
+</center>
+
+<script type="text/javascript">
+
+debug_flag = false;
+ERR_BAD_CREDENTIALS = -1;
+ERR_USER_EXISTS = -2;
+ERR_BAD_USERNAME = -3;
+ERR_BAD_PASSWORD  = -4;
+
+$('#login').show()
+$('#landing').hide()
+$('#error-page').hide()
+
+function error_page() {
+  $('#error-page').show();
+  $('#debug_message').html("Error via function call");
+  $('#landing').hide();
+  $('#login').hide();
+}
+
+
+function display_login(message) {
+  if(! message) message = "Please enter your credentials below";
+  $('#error-page').hide();
+  $('#debug_message').html("displaying the login page");
+  $('#landing').hide();
+  $('#login-txt').html(message);
+  $('#login').show();
+}
+
+function display_landing(user, count) {
+   $('#login').hide();
+   $('#landing').show();
+   $('#error-page').hide();
+   $('#debug_message').html("displaying the landing page");
+   $('#landing-txt').html("Welcome "+user+"<br>You have logged in "+count+" times.");
+}
+
+function login_route(data, user) {
+  if( data.errCode > 0 ) {
+     logcount = data.count;
+     display_landing(user, logcount);
+  } else {
+     if( debug_flag && data.errCode != -1 ) {
+           error_page();
+        }
+     
+     display_login( errCodeMessage(data.errCode) );  
+  }
+}
+
+function user_route(data, user) {
+  if( data.errCode > 0 ) {
+     logcount = data.count;
+     display_landing(user, logcount);
+  } else {
+     if( debug_flag && data.errCode != -3 && data.errCode != -2  ) {
+             error_page();
+        }
+     
+     display_login( errCodeMessage(data.errCode) );  
+  }
+}
+
+
+$('#login').click(function() {
+   username = $('#login-username').val()
+   password = $('#login-password').val()
+   json_request("/users/login", { user: username, password: password }, function(data) { return login_route(data, username); });
+
+   return false;
+});
+
+$('#adduser').click(function() {
+   username = $('#login-username').val()
+   password = $('#login-password').val()
+   json_request("/users/add", { user: username, password: password }, function(data) { return user_route(data, username); });
+
+   return false;
+});
+
+$('#logout-button').click(function() {
+  display_login("Please enter your credentials below");
+
+  return false;
+});
+-->
+</script>
+
+</body>
+</html>

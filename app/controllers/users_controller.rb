@@ -3,6 +3,39 @@ class UsersController < ApplicationController
 
 	require 'json'
 
+	# def index
+	# 	@user = User.new
+	# 	@users = User.find(:all)
+	# end
+
+	# def create
+	# 	@user = User.new(params[:user])
+	# 	if @user.save
+	# 		redirect_to new_user_path
+	# 	end
+
+	# end
+
+	def index
+
+	# user = param[:user]
+	# password = param[:password]
+	# if 
+
+
+
+ #    @user = User.new(params[:user])    # Not the final implementation!
+ #    if @user.save
+ #      # Handle a successful save.
+ #      # flash[:success] = "Welcome to the Sample App!" 	
+ #      # redirect_to @user
+ #    else
+ #      render 'new'
+ #    end
+  end
+
+
+
 	def login
 		user = params[:user]
 		password = params[:password]
